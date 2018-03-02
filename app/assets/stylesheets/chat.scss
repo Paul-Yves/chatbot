@@ -1,0 +1,33 @@
+body{
+  margin: 0;
+}
+html, body, #app, .chat{
+  height: 100%;
+}
+.message-list{
+  height: 80%;
+}
+.message-composer{
+  height: 20%;
+}
+
+.message-composer{
+  display: flex;
+}
+
+.message-composer .composer{
+  flex: 9 1 auto;
+  padding: 1em;
+}
+.message-composer .composer textarea{
+  width: 100%;
+  height: 100%;
+}
+.message-composer .sender{
+  flex: 1 1 auto;
+}
+.message-composer .sender button{
+  width: 100%;
+  height: 100%;
+
+}
