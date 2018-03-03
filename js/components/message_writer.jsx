@@ -10,13 +10,25 @@ class MessageWriter extends Component {
         }
     }
 
+    sendMessage(){
+        this.props.postMessage(this.state.content);
+        this.setState({content: ''});
+    }
+    onEnterPress(event){
+        if(event.keyCode == 13 && event.shiftKey == false) {
+            event.preventDefault();
+            this.sendMessage();
+        }
+    }
+
     render(){
         return <div className='message-composer'>
             <div className='composer'>
-                <textarea value={this.state.content} onChange={(e)=>this.setState({content: e.target.value})} />
+                <textarea value={this.state.content} onChange={(e)=>this.setState({content: e.target.value})} maxLength="512"
+                          onKeyDown={(e)=>this.onEnterPress(e)} />
             </div>
             <div className='sender'>
-                <button onClick={()=>this.props.postMessage(this.state.content)}>Send</button>
+                <button onClick={()=>this.sendMessage()}>Send</button>
             </div>
         </div>
     }

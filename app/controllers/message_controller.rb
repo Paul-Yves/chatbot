@@ -6,9 +6,12 @@ class MessageController < ApplicationController
 
   def create
     msg_content = params.require(:message)
-    msg = Message.create!(author: @current_user, type: 'text', content: msg_content)
-
-    render json: {message: msg, answer: nil}
+    if msg_content.size > 512
+      return render json: {error: 'Message too long, 512 characters max'}, type: 400
+    end
+    msg = Message.create!(author: @current_user, message_type: 'text', content: msg_content)
+    answer = RecastService.new.perform(msg, @current_user)
+    render json: {message: msg, answer: answer}
   end
 
   private

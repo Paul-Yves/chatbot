@@ -2,7 +2,7 @@ class CreateMessages < ActiveRecord::Migration[5.1]
   def change
     create_table :messages do |t|
       t.string :author
-      t.string :type
+      t.string :message_type
       t.text :content
 
       t.timestamps

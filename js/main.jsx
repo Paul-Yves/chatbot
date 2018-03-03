@@ -18,7 +18,9 @@ class App extends Component{
         axios.get('message/index')
             .then(function (response) {
                 const data = response.data;
-                self.setState({messages: data});
+                self.setState({messages: data}, ()=>{
+                    self.messageList.scrollTop = self.messageList.scrollHeight;
+                });
             })
             .catch(function (error) {
                 console.log(error);
@@ -31,8 +33,10 @@ class App extends Component{
             .then(function (response) {
                 const data = response.data;
                 let messages = self.state.messages;
-                messages.concat(data.message, data.answer);
-                self.setState({messages});
+                messages = messages.concat(data.message, data.answer);
+                self.setState({messages}, ()=>{
+                    self.messageList.scrollTop = self.messageList.scrollHeight;
+                });
             })
             .catch(function (error) {
                 console.log(error);
@@ -42,9 +46,9 @@ class App extends Component{
     render(){
         return (
             <div className="chat">
-                <div className='message-list'>
+                <div className='message-list' ref={el => { this.messageList = el; }}>
                     {this.state.messages.map((msg)=>
-                        <Message type={msg.type} author={msg.author} date={msg.created_at} content={msg.content}/>
+                        <Message type={msg.message_type} author={msg.author} date={msg.created_at} content={msg.content} key={'msg_'+msg.id}/>
                     )}
                 </div>
                 <MessageWriter postMessage={(msg)=>this.postMessage(msg)}/>

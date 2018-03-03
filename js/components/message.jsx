@@ -10,10 +10,13 @@ class Message extends Component {
     }
 
     render(){
-        const {author, date, content, type} = this.props;
-        return <div className='message'>
+        const { date, content, type} = this.props;
+        const author = this.props.author || 'chatbot';
+        const local_date = (new Date(date)).toLocaleString();
+        const messageClass = author === 'chatbot' ? 'message bot' : 'message user';
+        return <div className={messageClass}>
             <span className='author'>{author}</span>
-            <span className='date'>({date})</span>
+            <span className='date'>({local_date})</span>
             :
             {content}
         </div>
@@ -22,8 +25,8 @@ class Message extends Component {
 }
 Message.propTypes = {
     type: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired,
+    author: PropTypes.string,
     content: PropTypes.string.isRequired,
-    date: PropTypes.instanceOf(Date),
+    date: PropTypes.string.isRequired,
 };
 export default Message

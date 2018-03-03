@@ -6,6 +6,7 @@ html, body, #app, .chat{
 }
 .message-list{
   height: 80%;
+  overflow-y: scroll;
 }
 .message-composer{
   height: 20%;
@@ -30,4 +31,20 @@ html, body, #app, .chat{
   width: 100%;
   height: 100%;
 
+}
+
+.message{
+  border-radius: 5px;
+  padding: 0.3em;
+  margin: 5px 2em 0 2em;
+  width: fit-content;
+  max-width: 60%;
+}
+.message.user{
+  background-color: dodgerblue;
+}
+.message.bot{
+  background-color: palegreen;
+  margin-right: 2em;
+  margin-left: auto;
 }
