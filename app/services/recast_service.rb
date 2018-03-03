@@ -7,8 +7,8 @@ class RecastService
   def perform(message, user_id)
     build = RecastAI::Build.new(RECAST_TOKEN, 'en')
     response = build.dialog({ type: 'text', content: message.content }, user_id)
-    if response.messages.first
-      Message.create!(author: nil, message_type: response.messages.first.type, content: response.messages.first.content)
+    response.messages.map do |message|
+      Message.create!(author: nil, message_type: message.type, content: message.content)
     end
   end
 end

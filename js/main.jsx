@@ -33,7 +33,7 @@ class App extends Component{
             .then(function (response) {
                 const data = response.data;
                 let messages = self.state.messages;
-                messages = messages.concat(data.message, data.answer);
+                messages = messages.concat(data.message, data.answers);
                 self.setState({messages}, ()=>{
                     self.messageList.scrollTop = self.messageList.scrollHeight;
                 });

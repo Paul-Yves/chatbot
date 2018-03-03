@@ -10,8 +10,8 @@ class MessageController < ApplicationController
       return render json: {error: 'Message too long, 512 characters max'}, type: 400
     end
     msg = Message.create!(author: @current_user, message_type: 'text', content: msg_content)
-    answer = RecastService.new.perform(msg, @current_user)
-    render json: {message: msg, answer: answer}
+    answers = RecastService.new.perform(msg, @current_user)
+    render json: {message: msg, answers: answers}
   end
 
   private

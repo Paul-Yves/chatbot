@@ -14,11 +14,17 @@ class Message extends Component {
         const author = this.props.author || 'chatbot';
         const local_date = (new Date(date)).toLocaleString();
         const messageClass = author === 'chatbot' ? 'message bot' : 'message user';
+        let message = '';
+        if (type === 'text'){
+            message = content;
+        } else if (type === 'picture'){
+            message = <img src={content} />;
+        }
         return <div className={messageClass}>
             <span className='author'>{author}</span>
             <span className='date'>({local_date})</span>
             :
-            {content}
+            {message}
         </div>
     }
 

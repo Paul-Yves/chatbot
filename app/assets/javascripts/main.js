@@ -1737,7 +1737,7 @@ var App = function (_Component) {
             _index2.default.post('message', { authenticity_token: window._token, message: message }).then(function (response) {
                 var data = response.data;
                 var messages = self.state.messages;
-                messages = messages.concat(data.message, data.answer);
+                messages = messages.concat(data.message, data.answers);
                 self.setState({ messages: messages }, function () {
                     self.messageList.scrollTop = self.messageList.scrollHeight;
                 });
@@ -20005,6 +20005,12 @@ var Message = function (_Component) {
             var author = this.props.author || 'chatbot';
             var local_date = new Date(date).toLocaleString();
             var messageClass = author === 'chatbot' ? 'message bot' : 'message user';
+            var message = '';
+            if (type === 'text') {
+                message = content;
+            } else if (type === 'picture') {
+                message = _react2.default.createElement('img', { src: content });
+            }
             return _react2.default.createElement(
                 'div',
                 { className: messageClass },
@@ -20021,7 +20027,7 @@ var Message = function (_Component) {
                     ')'
                 ),
                 ':',
-                content
+                message
             );
         }
     }]);

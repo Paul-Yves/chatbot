@@ -40,6 +40,9 @@ html, body, #app, .chat{
   width: fit-content;
   max-width: 60%;
 }
+.message img{
+  max-width: 100%;
+}
 .message.user{
   background-color: dodgerblue;
 }
