@@ -20015,18 +20015,22 @@ var Message = function (_Component) {
                 'div',
                 { className: messageClass },
                 _react2.default.createElement(
-                    'span',
-                    { className: 'author' },
-                    author
+                    'div',
+                    null,
+                    _react2.default.createElement(
+                        'span',
+                        { className: 'author' },
+                        author
+                    ),
+                    _react2.default.createElement(
+                        'span',
+                        { className: 'date' },
+                        '(',
+                        local_date,
+                        ')'
+                    ),
+                    ':'
                 ),
-                _react2.default.createElement(
-                    'span',
-                    { className: 'date' },
-                    '(',
-                    local_date,
-                    ')'
-                ),
-                ':',
                 message
             );
         }

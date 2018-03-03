@@ -40,6 +40,9 @@ html, body, #app, .chat{
   width: fit-content;
   max-width: 60%;
 }
+.message .date{
+  margin-left: 2px;
+}
 .message img{
   max-width: 100%;
 }

@@ -21,9 +21,11 @@ class Message extends Component {
             message = <img src={content} />;
         }
         return <div className={messageClass}>
-            <span className='author'>{author}</span>
-            <span className='date'>({local_date})</span>
-            :
+            <div>
+                <span className='author'>{author}</span>
+                <span className='date'>({local_date})</span>
+                :
+            </div>
             {message}
         </div>
     }
