@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A small web application to connect to a chatbot from recast.ai and
+demonstrate how to converse with it
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
+run bundle to download deps
 
-* System dependencies
+db has no seed, so db:create is sufficient
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+js is already compiled but if needed, *npm install* then *npm run build*

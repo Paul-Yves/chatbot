@@ -1,5 +1,7 @@
 require 'recastai'
 
+# Service to send message to the bot and get answers
+# Each user has its own conversation
 class RecastService
 
   RECAST_TOKEN = 'e9ec12730e7a0063d6a8349946642c0f' # this should belong to secret but as demo of a specific bot too, it needs to be versioned
